@@ -59,6 +59,32 @@ paths:
                 $ref: '#/components/schemas/Task'
         '400':
           $ref: '#/components/responses/BadRequest'
+  /tasks/{id}:
+    get:
+      summary: Get a task by it's ID number
+      tags:
+        - Tasks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id number of the task
+          schema:
+            type: integer
+            example: 5
+      responses:
+        '200':
+          '400':
+            $ref: ../components/responses/BadRequest.yaml
+          '404':
+            $ref: ../componentes/schemas/NotFoundError.yaml
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
 components:
   schemas:
     Task:

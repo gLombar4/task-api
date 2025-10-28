@@ -1,25 +1,25 @@
 get:
   summary: Get a task by it's ID number
   tags:
-   - Tasks
+    - Tasks
   parameters:
-   - name: id
-     in: path
-     required: true
-     description: The id number of the task
-     schema:
-      type: integer
-      example: 5
-  responses:
-   '200':
-    description: OK
-    content:
-     application/json:
+    - name: id
+      in: path
+      required: true
+      description: The id number of the task
       schema:
-       type: array
-       items:
-        $ref: ../components/schemas/Task.yaml
+        type: integer
+        example: 5
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Task.yaml
     '400':
       $ref: ../components/responses/BadRequest.yaml
     '404':
-     $ref: ../componentes/schemas/NotFoundError.yaml
+      $ref: ../components/responses/NotFound.yaml

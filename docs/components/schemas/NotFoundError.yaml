@@ -2,9 +2,8 @@ type: object
 properties:
   error:
     type: string
-    example:
-     task not found
-    details:
-     type: array
-     items:
+    example: task not found
+  details:
+    type: array
+    items:
       type: String

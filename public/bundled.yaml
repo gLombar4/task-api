@@ -74,10 +74,6 @@ paths:
             example: 5
       responses:
         '200':
-          '400':
-            $ref: ../components/responses/BadRequest.yaml
-          '404':
-            $ref: ../componentes/schemas/NotFoundError.yaml
           description: OK
           content:
             application/json:
@@ -85,6 +81,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
 components:
   schemas:
     Task:
@@ -110,6 +110,16 @@ components:
           type: array
           items:
             type: String
+    NotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: task not found
+        details:
+          type: array
+          items:
+            type: String
   responses:
     BadRequest:
       description: Invalid input
@@ -117,3 +127,9 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidationError'
+    NotFound:
+      description: Task not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
